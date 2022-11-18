@@ -1,0 +1,29 @@
+.Drawer {
+    position: fixed;
+    z-index: 98;
+    background-color: #ffffff;
+    max-width: 500px;
+    min-width: 100%;
+    height: fit-content;
+    padding: 31px 0px;
+    bottom: 0;
+    box-sizing: border-box;
+    transition: all 0.25s ease-out;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    overflow-x: hidden;
+}
+
+#cancel {
+    position: absolute;
+    right: 32.76px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+@media(min-width: 500px) {
+    .Drawer {
+        min-width: 500px;
+    }
+}
+

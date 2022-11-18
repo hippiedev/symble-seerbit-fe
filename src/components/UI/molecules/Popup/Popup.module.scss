@@ -1,0 +1,38 @@
+@import '../../../../styles/variables';
+
+.Popup {
+    transition: 0.3s ease-in-out;
+    position: fixed;
+    padding: 16px 20px;
+    border: 0.5px solid $color-primary-light-blue;
+    color: $color-grey-darkest-grey;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15.67px;
+    background: $color-primary-light-grey;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 8%;
+    z-index: 100;
+}
+
+.Success {
+    border: 0.5px solid $color-status-green;
+}
+
+.Error {
+    border: 0.5px solid $color-status-red;
+}
+
+.Warning {
+    border: 0.5px solid $color-primary-yellow;
+}
+
+.Notification {
+    border: 0.5px solid $color-primary-light-blue;
+}

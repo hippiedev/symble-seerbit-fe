@@ -1,0 +1,172 @@
+@import '../../styles/variables';
+
+.PublicEvent {
+    padding: 90px 28px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.EventImage {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 17px 19px;
+    padding-bottom: 32px;
+    border-radius: 10px;
+
+    .OverflowInfo {
+        display: flex;
+        flex-direction: row-reverse;
+
+        span {
+            background: linear-gradient(102.88deg, $color-primary-dark-purple -6.27%, #96877A 45.83%, $color-primary-yellow 103.26%);
+            margin: 14px 0px;
+            border-radius: 5px;
+            width: fit-content;
+            height: fit-content;
+            font-weight: 700;
+            font-size: 10px;
+            line-height: 12px;
+            color: #ffffff;
+            padding: 4px 9px;
+            display: flex;
+            flex-direction: row;
+            gap: 2px;
+            align-items: center;
+        }
+    }
+
+    .Info {
+        width: 85%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+
+        h2 {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 29px;
+            color: #fff;
+        }
+
+        span {
+            color: $color-primary-yellow;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 17px;
+
+        }
+    }
+}
+
+.SubWrap {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 14px 0px;
+
+    .TagsWrap {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+
+        span {
+            background: $color-primary;
+            box-shadow: 0px 4px 4px rgba(151, 216, 196, 0.1);
+            border-radius: 10px;
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 12px;
+            color: #fff;
+            padding: 3px 12px;
+        }
+    }
+}
+
+.UserDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+
+    .Wrapper {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        margin-top: 36px;
+
+        #avatar {
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            border: 2px solid $color-primary;
+            cursor: pointer;
+        }
+
+        span {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+
+            h2 {
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 24px;
+                color: $color-primary;
+            }
+        }
+    }
+
+    #bio {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: $color-grey-darkest-grey;
+    }
+}
+
+.EventInfoWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+
+    .InfoItem {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h4 {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            color: $color-grey-darker-grey;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: $color-grey-darkest-grey;
+        }
+    }
+}
+
+.LoadingWrap {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

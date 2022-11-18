@@ -1,0 +1,70 @@
+@import '../../../styles/variables';
+
+.UserEventsList {
+    height: fit-content;
+    width: 100%;
+    margin-top: 27px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 18px;
+    row-gap: 26px;
+}
+
+.UserEvent {
+    background-size: cover;
+    height: 233px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 10px;
+}
+
+.OverflowInfo {
+    display: flex;
+    flex-direction: row-reverse;
+
+    span {
+        background: linear-gradient(102.88deg, $color-primary-dark-purple -6.27%, #96877A 45.83%, #24164C 103.26%);
+        
+        border-radius: 5px;
+        width: fit-content;
+        height: fit-content;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 12px;
+        color: #ffffff;
+        padding: 4px 9px;
+        display: flex;
+        flex-direction: row;
+        gap: 2px;
+        align-items: center;
+    }
+}
+
+.Info {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    gap: 10px;
+    padding-bottom: 14px;
+
+    #Name {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .EventDetails {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        h2 {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+}

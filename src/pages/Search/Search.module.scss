@@ -1,0 +1,236 @@
+@import '../../styles/variables';
+
+.Search {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 100px;
+  padding-top: 40px;
+  position: relative;
+}
+.SearchboxContainer {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  img {
+    position: absolute;
+    right: 38px;
+    top: 23px;
+  }
+}
+.tab{
+  // padding-left: 11px;
+  // padding-right: 11px;
+  display: flex;
+  gap: 42px;
+  border-bottom: 1px solid #E1EBF3;
+  justify-content: space-evenly;
+  padding-bottom: 17px;
+  margin-bottom: 20px;
+  span{
+    // color: #4059AD;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+.searchedUser{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+.topLiveWrapper{
+  width:100%;
+  display: flex;
+  gap: 4.25px;
+  overflow-x: scroll;
+}
+.topLive{
+  width: 108.75px;
+  height: 106px;
+  margin-bottom: 50px;
+  position: relative;
+  p{
+    color: white;
+    font-size: 12px;
+  }
+  .topLiveText{
+    position: absolute;
+    bottom: 1px;
+    padding-left: 8px;
+    padding-bottom: 6px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 39.94%, rgba(0, 0, 0, 0.5) 76.67%);
+    width: 100%;    
+  }
+  img{
+    width: 100%;
+    height: 100%;
+  }
+}
+.topHeaderStyle{
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.searchBase{
+  width: 100%;
+  // margin: 0 auto;
+  columns: 2;
+  height: 100%;
+  column-gap: 5px;
+  row-gap: 105px;
+  // border: 1px solid red;
+  // display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  // gap: 5px;
+  // masonry-auto-flow: ;
+  // display: flex;
+  // flex-flow: column;
+  // flex-wrap: wrap;
+  // display: grid;
+  // grid-template-columns: auto;
+  // grid-column-gap: 4.25px;
+	// grid-row-gap: 4.25px;
+  // grid-auto-flow: column;
+  // grid-auto-flow: row;
+
+}
+.searchGridItem{
+  // border: 1px solid red;
+  width: auto;
+  height: auto;
+  // max-height: 150px;
+  position: relative;
+  margin-bottom: 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  object-fit: cover;
+  
+  img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    object-fit: cover;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 39.94%, rgba(0, 0, 0, 0.5) 76.67%);
+
+
+  }
+  p{
+    color: white;
+    font-size: 12px;
+    width: 100%;
+
+  }
+  .topLiveText{
+    position: absolute;
+    bottom: 1px;
+    padding-left: 8px;
+    padding-bottom: 6px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 39.94%, rgba(0, 0, 0, 0.5) 76.67%);
+    width: 100%;
+
+  }
+}
+.searchGridItem:nth-child(odd){
+  height: 200px;
+  // grid-row-end: span 2;
+  // grid-row-end: span 2;
+  // grid-column-end: 2;
+
+  // grid-template-columns: 2fr;
+  // width: 221.75px;
+  // height: 216px;
+}
+.searchGridItem:nth-child(even){
+  height: 200px;
+  // grid-row-end: span 2;
+  // grid-row-end: span 2;
+  // grid-column-end: 2;
+
+  // grid-template-columns: 2fr;
+  // width: 221.75px;
+  // height: 216px;
+}
+
+
+.eventAlignment{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+}
+
+.User {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 22px;
+  button {
+    padding: 8px 20px;
+    background: $color-primary;
+    color: #fff;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    border-radius: 25px;
+    border-style: none;
+    cursor: pointer;
+    &:disabled {
+      background: $color-grey-light-grey;
+      cursor: not-allowed;
+    }
+  }
+  span {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    cursor: pointer;
+    img {
+      height: 49px;
+      width: 49px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid $color-primary;
+    }
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+#UserInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+#FollowsYou {
+  font-size: 14px;
+  color: $color-grey-darker-grey;
+  font-style: italic;
+}
+
+.ComingSoon {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+  #icon {
+    height: 250px;
+    width: 250px;
+  }
+  h5 {
+    font-family: 'Lato';
+    font-size: 20px;
+    color: $color-primary;
+  }
+}

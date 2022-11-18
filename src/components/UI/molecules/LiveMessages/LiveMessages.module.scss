@@ -1,0 +1,53 @@
+@import '../../../../styles/variables';
+
+.LiveMessages {
+    position: absolute;
+    bottom: 50px;
+    height: 250px;
+    width: 53%;
+    overflow-y: scroll;
+    color: #fff;
+    // background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 100;
+}
+
+.LiveMessages::-webkit-scrollbar {
+    display: none;
+}
+
+.Message {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .MessageHead {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+        color: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 7px;
+
+        span {
+            font-weight: 700;
+            font-size: 12px;
+            color: $color-primary-yellow;
+        }
+    }
+}
+
+#message {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}

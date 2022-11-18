@@ -1,0 +1,44 @@
+.NewCard{
+    padding-top: 75px;
+    padding-bottom: 89px;
+    position: relative;
+    h1{
+        margin-bottom: 15px;
+    }
+}
+.cancel{
+    position: absolute;
+    top: 49.76px;
+    right: 6.76px;
+}
+
+.cardDetailsFlex{
+    display: flex;
+    gap: 46px;
+    margin-top: 28px;
+    margin-bottom: 20px;
+    
+    
+}
+
+.cvv{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 7px;
+    p{
+        color: #24164C;
+        font-size: 12px;
+        width: 150px;
+    }
+}
+.saveCard{
+    margin-bottom: 27px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    p{
+        color: #24164C;
+        font-size: 14px;
+    }
+}

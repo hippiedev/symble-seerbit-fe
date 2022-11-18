@@ -1,0 +1,32 @@
+.Notification {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: 100%;
+  border-bottom: 1px solid #eff2f1;
+  padding-bottom: 30px;
+}
+.Container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+.ButtonsWrap {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+  button {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}

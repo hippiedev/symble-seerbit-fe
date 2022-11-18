@@ -1,0 +1,40 @@
+.EditProduct{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    position: relative;
+}
+
+.EditProductHeader{
+    margin-bottom: 35px;
+    h1{
+        font-weight: 700;
+        font-size: 24px;
+    }
+}
+.EditProductImage{
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    margin-bottom: 27px;
+    img{
+        width: 70px;
+        height: 66px;
+    }
+    p{
+        color: #24164C;
+        font-size: 14px;
+    }
+}
+.InputStyle{
+    margin-bottom: 31px;
+}
+
+.Button{
+    display: flex;
+    justify-content: center;
+    margin-top: 46px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

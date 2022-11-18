@@ -1,0 +1,34 @@
+{
+  
+    "name": "Symble",
+    "short_name": "Symble",
+    "theme_color": "#F18902",
+    "background_color": "#F18902",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": ".",
+    "description": "Symble is a platform for creators to host live events and earn. Content consumers and fans also get to explore and appreciate content from their faves!",
+  
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
+
+
+
+

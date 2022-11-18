@@ -1,0 +1,70 @@
+@import '../../styles/variables';
+
+.Categories {
+    width: 100%;
+    padding: 0 30px;
+    padding-top: 69px;
+    padding-bottom: 30px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.Info {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: $color-primary;
+}
+
+.CategoryItemsWrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 25px;
+    row-gap: 28px;
+    margin: 0 auto;
+    margin-top: 35px;
+    margin-bottom: 26px;
+
+    .Wrap {
+        position: relative;
+        height: fit-content;
+        width: fit-content;
+
+        img {
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 1px;
+        }
+    }
+
+}
+
+.Tag {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    background: $color-primary;
+    height: 27px;
+    width: 27px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Button {
+    position: fixed;
+    min-width: 420px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 0;
+}
+
+@media(max-width: 500px) {
+    .Button {
+        min-width: 300px;
+    }
+}

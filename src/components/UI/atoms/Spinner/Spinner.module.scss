@@ -1,0 +1,22 @@
+@import '../../../../styles/variables';
+
+.Spinner {
+    border: 4px solid $color-primary-light-grey;
+    border-radius: 50%;
+    border-top: 4px solid $color-primary;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Safari */ 
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

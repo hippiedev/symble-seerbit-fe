@@ -1,0 +1,63 @@
+.Settings{
+    padding-left: 20px;
+    padding-right: 34px;
+    padding-bottom: 100px;
+    padding-top: 40px;
+    position: relative;
+}
+.titleText{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 34px;
+}
+.SettingItem{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    p {
+        cursor: pointer;
+    }
+}
+.SettingItemFlex1{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.businessModeFlex{
+    display: flex;
+    gap: 67px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.businessModeDesc{
+    max-width: 330px;
+    margin-bottom: 30px;
+    color: #999999;
+    font-size: 14px;
+    line-height: 16.8px;
+}
+.changePasswordAndPin {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 16px;
+    color: #24164C;
+    margin-top: 20px;
+    margin-left: 35px;
+    margin-bottom: 28px;
+
+    p {
+        cursor: pointer;
+    }
+    span{
+        cursor: pointer;
+    }
+}
+.closeAccount{
+    color: #D82B2B;
+}
+.toggleBussinessMode{
+    display: flex;
+    gap: 15px;
+}

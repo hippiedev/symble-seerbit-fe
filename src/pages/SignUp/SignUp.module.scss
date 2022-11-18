@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+
+.SignUp {
+    display: flex;
+    flex-direction: column;
+    margin-top: 21px;
+    .Form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        button {
+            margin-top: 11px;
+        }
+    }
+}
+
+.SocialAuth {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        span {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            color: $color-grey-darker-grey;
+        }
+
+        &:last-child {
+            justify-content: space-evenly;
+        }
+
+    }
+}
+.GoogleAuth {
+    background: rgba(64, 89, 173, 0.02);
+    border-radius: 5px;
+    border-style: none;
+    font-family: 'Lato';
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 5px;
+    cursor: pointer;
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+#error {
+    color: $color-status-red;
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}

@@ -1,0 +1,62 @@
+.AddYoutubeVideo{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    position: relative;
+    height: 100vh;
+}
+.titleText{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 34px;
+}
+.headerDesc{
+    max-width: 324px;
+    margin-bottom: 30px;
+    color: #999999;
+    font-size: 14px;
+    line-height: 16.8px;
+}
+.noContent{
+    margin-top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 18px;
+}
+.noContentHeader{
+    color: #323232;
+    font-weight: 600;
+    font-size: 20px;
+}
+.syncYoutube{
+    font-size: 14px;
+    color: #24164C;
+}
+.youtubeVideo{
+    display: flex;
+    gap: 16px;
+    .youtubeVideoTittle{
+        margin-bottom: 9px;
+        font-weight: 700;
+        font-size: 14px;
+
+    }
+    .youtubeVideoDesc{
+        width: 165px;
+        color: #999999;
+        font-size: 12px;
+        line-height: 14.4px;
+    }
+}
+.Button{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

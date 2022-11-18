@@ -1,0 +1,40 @@
+@import '../../../styles/variables';
+
+.AuthScreen {
+    padding: 75px 30px;
+    padding-bottom: 30px;
+    position: relative;
+    height: fit-content;
+
+    .Logo {
+        display: flex;
+        flex-direction: row;
+        height: fit-content;
+    }
+}
+
+.PageHeading {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    margin-top: 8px;
+
+    h1 {
+        color: $color-grey-darkest-grey;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: $color-grey-darker-grey;
+        span {
+            color: $color-primary-light-blue;
+            font-weight: 700;
+        }
+    }
+}

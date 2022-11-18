@@ -1,0 +1,45 @@
+@import '../../../../styles/variables';
+
+.Likes {
+  position: relative;
+  top: -10px;
+  left: 23px;
+}
+#Like {
+  position: absolute;
+  animation: linear 2s floatAway;
+  opacity: 0;
+  height: 26px;
+  width: 26px;
+}
+.Avatar {
+  height: 26px;
+  width: 26px;
+  border: 2px solid $color-primary-light-blue;
+  border-radius: 50%;
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  animation: linear 2s transformAvatar;
+}
+
+@keyframes floatAway {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, -1000%);
+  }
+}
+// @keyframes transformAvatar {
+//   50% {
+//     transform: scale(0);
+//     background-image: url('../../../../assets/icons/Like.svg');
+//   }
+//   60% {
+//     transform: scale(1);
+//   }
+// }

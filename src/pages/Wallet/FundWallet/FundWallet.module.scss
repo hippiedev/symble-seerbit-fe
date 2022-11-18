@@ -1,0 +1,25 @@
+@import '../../../styles/variables';
+
+.FundWallet {
+    padding: 50px 31px;
+    position: relative;
+
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        margin-top: 15px;
+        color: $color-grey-darker-grey;
+    }
+}
+
+.Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+    margin-top: 24px;
+}

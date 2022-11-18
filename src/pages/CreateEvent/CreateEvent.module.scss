@@ -1,0 +1,168 @@
+@import '../../styles/variables';
+
+.CreateEvent {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 36.76px;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    width: 100%;
+    height: 150vh;
+    position: relative;
+
+    .Title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 21px;
+
+        #PrevIcon {
+            cursor: pointer;
+        }
+
+        h1 {
+            color: $color-grey-darkest-grey;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 29px;
+        }
+    }
+
+}
+
+#cancelIcon {
+    position: absolute;
+    right: 36.76px;
+}
+
+.FormSection {
+    height: fit-content;
+    width: 90%;
+    position: absolute;
+    top: 110px;
+    transition: 0.3s ease-in-out;
+
+    h2 {
+        color: $color-primary;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+.Form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.RadioForm {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &>.RadioWrap {
+        p {
+            color: $color-grey-darkest-grey;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 17px;
+        }
+
+        border-bottom: 1px solid #EFF2F1;
+        padding-bottom: 20px;
+        width: 100%;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+
+        .InputWrap {
+            width: 193px;
+            margin-top: 20px;
+
+            label {
+                color: $color-primary;
+            }
+        }
+
+        .Wrapper {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 42px;
+
+            label {
+                color: $color-primary;
+            }
+        }
+    }
+}
+
+#error {
+    color: $color-status-red;
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+#errorsWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    span {
+        color: $color-status-red;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+.InputWrap {
+    flex: 1;
+}
+
+.TagsWrap {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    #tag {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+        background: $color-primary-yellow;
+        border-radius: 10px;
+        padding: 7.5px 10px;
+        color: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        #removeIcon {
+            cursor: pointer;
+        }
+    }
+}
+
+.AdditionalSettings {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    cursor: pointer;
+
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

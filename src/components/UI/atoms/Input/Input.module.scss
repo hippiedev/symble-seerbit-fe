@@ -1,0 +1,271 @@
+@import '../../../../styles/variables';
+
+.InputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+
+  label {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $color-grey-darkest-grey;
+    text-transform: capitalize;
+  }
+
+  .InputWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    height: fit-content;
+
+    textarea {
+      border: none;
+      outline: none;
+      background: transparent;
+      mix-blend-mode: normal;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      height: 100%;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: $color-grey-darkest-grey;
+      width: 100%;
+      padding: 14px 9px;
+      border: 1px solid $color-grey-light-grey;
+      border-right: none;
+      border-right: 1px solid $color-grey-light-grey;
+      resize: none;
+      height: 80px;
+    }
+  }
+
+  .InputWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    height: 45px;
+
+    input {
+      border: none;
+      outline: none;
+      background: transparent;
+      mix-blend-mode: normal;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      height: 100%;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: $color-grey-darkest-grey;
+      width: 100%;
+      padding: 14px 9px;
+      border: 1px solid $color-grey-light-grey;
+      border-right: none;
+      &:disabled {
+        background: #e3e3e358;
+        color: $color-grey-darker-grey;
+        cursor: not-allowed;
+      }
+    }
+
+    span {
+      background: transparent;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0px 18.17px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      cursor: pointer;
+      border: 1px solid $color-grey-light-grey;
+      border-left: none;
+    }
+  }
+}
+
+.withoutAdornment {
+  input,
+  textarea {
+    border-radius: 5px;
+    border-right: 1px solid red;
+    color: red;
+  }
+}
+
+#extraLabelText {
+  color: $color-primary;
+  text-transform: none;
+}
+
+.VerificationInputContainer {
+  height: 54px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.VerificationInputChar {
+  line-height: 48px;
+  width: 54px;
+  background: transparent;
+  border: 1px solid $color-grey-darker-grey;
+  margin-left: 14px;
+  font-family: 'Lato';
+  font-weight: 600;
+  font-size: 22px;
+  color: $color-grey-darkest-grey;
+}
+
+.VerificationInputChar:first-child {
+  margin-left: 0;
+}
+
+.CharInactive {
+  background: transparent;
+}
+
+.CharSelected {
+  border: 1px solid $color-primary;
+}
+
+.SelectInput {
+  border: none;
+  outline: none;
+  background: transparent;
+  mix-blend-mode: normal;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: $color-grey-darkest-grey;
+  width: 100%;
+  height: 45px;
+  padding: 14px 0px;
+  outline: 1px solid $color-grey-light-grey;
+}
+
+.FileInputWrap {
+  height: 154px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed $color-grey-light-grey;
+  border-radius: 5px;
+
+  button {
+    background: transparent;
+    border: none;
+    color: $color-primary;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    cursor: pointer;
+  }
+
+  label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: $color-grey-darker-grey;
+  }
+}
+
+.Radio {
+  height: fit-content;
+  width: fit-content;
+
+  .Wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 35px;
+  }
+
+  .RadioWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+  }
+
+  p {
+    color: $color-grey-darkest-grey;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    padding-bottom: 20px;
+  }
+
+  label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $color-grey-darkest-grey;
+  }
+}
+
+.DateTimeInput {
+  font-family: 'Lato';
+  font-weight: 400;
+  font-size: 12px;
+  outline: none;
+}
+
+.LiveInputWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  flex: 1;
+  border: 1px solid #fff;
+  border-radius: 15px;
+
+  input {
+    background: transparent;
+    border: 0;
+    height: 100%;
+    padding-left: 13px;
+    flex: 4;
+    color: #fff;
+    outline: none;
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+
+    &::placeholder {
+      color: #fff;
+      font-family: 'Lato';
+      font-weight: 400;
+      font-size: 12px;
+
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+      user-select: none;
+    }
+  }
+
+  span {
+    height: 100%;
+    padding: 0px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+}

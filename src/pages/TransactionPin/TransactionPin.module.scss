@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+
+.TransactionPin {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 86%;
+    transition: 0.3s ease-in-out;
+}
+
+.Text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $color-grey-darker-grey;
+    margin-bottom: 38px;
+}
+.Error {
+    font-size: 14px;
+    color: $color-status-red;
+    font-weight: 500;
+    position: relative;
+    top: 150px;
+    text-align: center;
+}

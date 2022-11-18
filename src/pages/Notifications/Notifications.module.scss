@@ -1,0 +1,84 @@
+.Notifications{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
+    height: 100vh;
+    // position: relative;
+    h1{
+        font-size: 20px;
+    }
+}
+
+.NotificationsHeader{
+    display: flex;
+    margin-top: 11px;
+    h3{
+        font-weight: 600;
+        color: #CCCCCC;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    span{
+        margin: 0 10px;
+        border: 1px solid #24164C;
+        color: #24164C;
+    }
+}
+
+.notFoundImg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80.28px;
+    p{
+        width: 202px;
+        margin-top: 14.2px;
+        text-align: center;
+        color: #999999;
+        font-size: 14px;
+    }
+}
+.notificationSection{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 29px;
+    border-bottom: 1px solid #EFF2F1;
+    img{
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+    }
+}
+.buttonFlex{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    font-size: 2px;
+}
+.upcomingEventFlex{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    span{
+        color: #4059AD;
+        // font-weight: 700;
+    }
+}
+.LoadingWrap {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.NotificationsWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 35px;
+}

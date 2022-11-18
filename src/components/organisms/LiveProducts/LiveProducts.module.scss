@@ -1,0 +1,59 @@
+@import '../../../styles/variables';
+
+.Product {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    a {
+        flex: 1;
+    }
+    .Media {
+        height: 174px;
+        width: 180px;
+        border-radius: 10px;
+        background-size: cover;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .Bookmark {
+            cursor: pointer;
+        }
+
+        .PriceTag {
+            padding: 2px 13px;
+            background: $color-primary;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+        }
+    }
+}
+
+.Heading {
+    padding-left: 31px;
+    padding-bottom: 30px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000;
+}
+
+.ProductsWrapper {
+    width: 100%;
+    height: fit-content;
+    overflow-x: auto;
+    padding: 0px 20px;
+    padding-right: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 37px;
+}

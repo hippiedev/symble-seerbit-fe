@@ -1,0 +1,53 @@
+@import '../../../styles/variables';
+
+.SpraySettings {
+  width: 100%;
+  height: fit-content;
+  padding: 0px 41px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: $color-grey-darkest-grey;
+  }
+}
+
+.Details {
+  margin: 22px 0px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: $color-grey-darker-grey;
+}
+
+.InputContainer {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.Button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.Summary {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: $color-grey-darker-grey;
+  margin-top: 20px;
+  span {
+    color: $color-grey-darkest-grey;
+  }
+}
+#Error {
+    color: $color-status-red;
+    font-size: 12px;
+    padding-top: 10px;
+}

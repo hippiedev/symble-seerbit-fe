@@ -1,0 +1,50 @@
+@import '../../../styles/variables';
+
+.Drawer {
+  position: fixed;
+  z-index: 98;
+  background-color: #ffffff;
+  max-width: 500px;
+  min-width: 100%;
+  height: fit-content;
+  padding: 31px 0px;
+  bottom: 0;
+  box-sizing: border-box;
+  transition: all 0.25s ease-out;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  overflow-x: hidden;
+}
+
+.EnterPin {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 31px;
+  h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000;
+    margin-bottom: 11px;
+  }
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $color-grey-darker-grey;
+    margin-bottom: 37px;
+  }
+}
+
+#cancel {
+  position: absolute;
+  right: 32.76px;
+  z-index: 100;
+  cursor: pointer;
+}
+
+@media (min-width: 500px) {
+  .Drawer {
+    min-width: 500px;
+  }
+}

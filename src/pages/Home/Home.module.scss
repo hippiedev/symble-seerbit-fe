@@ -1,0 +1,77 @@
+@import '../../styles/variables';
+
+.Home {
+  padding-left: 20px;
+  padding-top: 40px;
+  min-height: fit-content;
+  padding-bottom: 100px;
+}
+
+.Wrapper {
+  margin-top: 37px;
+
+  .ContentDescription {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $color-grey-darker-grey;
+  }
+}
+
+.AddIcon {
+  padding: 18px;
+  width: fit-content;
+  height: fit-content;
+  background: linear-gradient(
+    131.47deg,
+    #f18902 16.05%,
+    #567ab9 58.07%,
+    #6b9ac4 84.96%
+  );
+  box-shadow: 0px 4px 4px rgba(64, 89, 173, 0.15);
+  border-radius: 50%;
+  position: fixed;
+  // left: 77.07%;
+  // right: 7.2%;
+  // top: 81.77%;
+  // bottom: 89.11px;
+  right: 15px;
+  bottom: 75px;
+  cursor: pointer;
+}
+
+.EventsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.NoEvent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: fit-content;
+  width: 75%;
+  gap: 30px;
+  margin: 0 auto;
+  position: relative;
+  left: -10px;
+  top: 50px;
+
+  p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: $color-grey-darkest-grey;
+  }
+}
+
+@media (min-width: 500px) {
+  .AddIcon {
+    left: 62%;
+    top: 72%;
+  }
+}

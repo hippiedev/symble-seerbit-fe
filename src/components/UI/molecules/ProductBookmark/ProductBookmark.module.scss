@@ -1,0 +1,43 @@
+@import '../../../../styles/variables';
+
+.ProductBookmark {
+    position: relative;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.SpinnerWrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.Media {
+    height: 135px;
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    padding: 9px 8px;
+
+    .PriceTag {
+        background: $color-primary;
+        padding: 3px 12px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: #fff;
+        border-radius: 5px;
+    }
+}
+
+.ProductName {
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+}

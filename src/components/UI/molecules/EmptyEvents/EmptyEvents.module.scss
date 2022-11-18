@@ -1,0 +1,42 @@
+@import '../../../../styles/variables';
+
+.Wrapper {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.EmptyDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 21.33px;
+    height: fit-content;
+    width: fit-content;
+
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: $color-grey-darker-grey;
+    }
+
+    .EmptyCTA {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 6.92px;
+        cursor: pointer;
+
+        span {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: $color-primary;
+        }
+    }
+}

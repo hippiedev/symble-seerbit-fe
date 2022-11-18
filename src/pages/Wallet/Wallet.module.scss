@@ -1,0 +1,163 @@
+@import '../../styles/variables';
+
+.Wallet {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 40px;
+  min-height: fit-content;
+  padding-bottom: 100px;
+  // max-width: 375px;
+  // position: relative;
+}
+
+.WalletHeader {
+  width: 100%;
+  height: 206px;
+  background: linear-gradient(142.83deg,
+      $color-primary 2%,
+      $color-primary 98.36%);
+  border-radius: 20px;
+  padding-left: 32px;
+  padding-top: 30px;
+  margin-bottom: 23px;
+}
+
+.walletProfilePictureAndName {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 14px;
+
+  p {
+    font-weight: 700;
+    color: white;
+    font-size: 16px;
+  }
+
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    // border: 2px solid $color-primary-yellow;
+    object-fit: cover;
+  }
+}
+
+.profilePicture {
+  width: 40px;
+  height: 40px;
+}
+
+.Balance {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  p {
+    font-weight: 700;
+    color: #e1ebf3;
+    font-size: 12px;
+  }
+
+  h1 {
+    font-weight: 700;
+    color: white;
+    font-size: 48px;
+  }
+}
+
+.walletActions {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 33px;
+
+  p {
+    color: #24164c;
+    font-size: 12px;
+  }
+}
+
+.walletAction {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+
+  .actionIcon {
+    width: 55px;
+    height: 55px;
+    background: rgba(64, 89, 173, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.Transactions {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h2 {
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
+
+.allTransactions {
+  text-align: center;
+  color: #6b9ac4;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.WalletThing {
+  width: 100%;
+  height: fit-content;
+}
+
+.UnverifiedMessage {
+  margin: 20px;
+  background: $color-primary;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.NoTransactions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  gap: 20px;
+
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+.ComingSoon {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+  #icon {
+    height: 250px;
+    width: 250px;
+  }
+  h5 {
+    font-family: 'Lato';
+    font-size: 20px;
+    color: $color-primary;
+  }
+}

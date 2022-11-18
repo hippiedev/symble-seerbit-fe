@@ -1,0 +1,31 @@
+@import "../../../../styles/variables";
+
+.ActionModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: $color-grey-darkest-grey;
+        margin-top: 22px;
+        text-align: center;
+    }
+}
+
+.ButtonsWrap {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+.Icon {
+    height: 88px;
+    width: 88px;
+    border-radius: 50%;
+}
