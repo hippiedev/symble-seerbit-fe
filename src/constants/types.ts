@@ -29,6 +29,7 @@ export interface Product {
   quantity: number;
   url: string;
   price: { $numberDecimal: string };
+  paymentLinkUrl: string;
 }
 
 export interface Event {

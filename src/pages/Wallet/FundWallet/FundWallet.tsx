@@ -28,7 +28,7 @@ function FundWallet() {
   const handleTopupWallet = async (amount) => {
     try {
       const response = await topupWallet({ amount }).unwrap();
-      window.location.assign(response.authorization_url);
+      window.location.assign(response.payments.redirectLink);
       console.log(response);
     } catch (e) {
       console.log(e, topupError);

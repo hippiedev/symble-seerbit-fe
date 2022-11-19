@@ -1,5 +1,5 @@
-import { Wallet } from '../../../constants/types';
-import { apiSlice } from '../../apiSlice';
+import { Wallet } from "../../../constants/types";
+import { apiSlice } from "../../apiSlice";
 
 export const walletApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -8,34 +8,34 @@ export const walletApiSlice = apiSlice.injectEndpoints({
       undefined
     >({
       query: () => ({
-        url: 'wallets',
-        method: 'post',
+        url: "wallets",
+        method: "post",
       }),
     }),
     topupWallet: builder.mutation<
-      { verificationUrl: string; authorization_url: string },
+      { payments: { redirectLink: string; } },
       { amount: number }
     >({
       query: (payload) => ({
-        url: 'wallets/fund',
-        method: 'post',
+        url: "wallets/fund",
+        method: "post",
         data: { ...payload },
       }),
-      invalidatesTags: ['Wallet'],
+      invalidatesTags: ["Wallet"],
       transformResponse: (response) =>
         (
           response as {
             message: string;
-            data: { verificationUrl: string; authorization_url: string };
+            data: { payments: { redirectLink: string } };
           }
         ).data,
     }),
     getUserWallet: builder.query<Wallet, undefined>({
       query: () => ({
-        url: 'wallets/user',
-        method: 'get',
+        url: "wallets/user",
+        method: "get",
       }),
-      providesTags: ['Wallet'],
+      providesTags: ["Wallet"],
       transformResponse: (response) =>
         (response as { message: string; data: Wallet }).data,
     }),
@@ -44,11 +44,11 @@ export const walletApiSlice = apiSlice.injectEndpoints({
       { to: string; amount: number }
     >({
       query: (payload) => ({
-        url: 'wallets/send',
-        method: 'post',
+        url: "wallets/send",
+        method: "post",
         data: { ...payload },
       }),
-      invalidatesTags: ['Wallet'],
+      invalidatesTags: ["Wallet"],
     }),
   }),
 });

@@ -72,7 +72,7 @@ function SignIn() {
   useEffect(() => {
     const initClient = () => {
       gapi.client.init({
-        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        clientId: '46102556524-sb6bo0sbjrvavu8jc77mj7hem6tfnj8l.apps.googleusercontent.com',
         scope: '',
       });
     };

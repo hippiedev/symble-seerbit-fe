@@ -111,7 +111,7 @@ export function LiveProduct({
         </span>
       </div>
       <p>{product.name}</p>
-      <a href={product.url} target="__blank">
+      <a href={product.paymentLinkUrl} target="__blank">
         <Button
           buttonStyles={{
             backgroundColor: '#24164C',

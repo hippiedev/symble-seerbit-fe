@@ -53,11 +53,9 @@ function AddProduct({ edit }: { edit?: boolean }) {
   const initialValues = {
     name: edit && success ? product.name : '',
     quantity: edit && success ? `${product.quantity}` : '',
-    url: edit && success ? `${product.url}` : '',
   };
   const validationSchema = Yup.object({
     name: Yup.string().required('This is a required field'),
-    url: Yup.string().required('This is a required field'),
     quantity: Yup.number().required('This is a required field'),
   });
 
@@ -222,22 +220,6 @@ function AddProduct({ edit }: { edit?: boolean }) {
                       />
                       {touched.name && errors.name ? (
                         <p id={styles.error}>{errors.name}</p>
-                      ) : null}
-                    </div>
-                    <div className={styles.InputStyle}>
-                      <TextInput
-                        inputName="External link to product"
-                        extraLabelText="e.g: https://example.com/my-product"
-                        id="url"
-                        value={values.url}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        name="url"
-                        type="url"
-                        error={touched.url && errors.url}
-                      />
-                      {touched.url && errors.url ? (
-                        <p id={styles.error}>{errors.url}</p>
                       ) : null}
                     </div>
                     <div className={styles.InputStyle}>
