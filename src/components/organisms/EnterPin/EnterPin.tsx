@@ -64,7 +64,7 @@ function EnterPin({ closeDrawer, show, drawerStyles, action }: Props) {
             length={4}
           />
           <Button
-            disabled={pin.length !== 4 || !!error}
+            disabled={pin.length !== 4 || !!error || isLoading}
             buttonStyles={{ marginTop: "50px" }}
             clicked={handleProceed}
           >

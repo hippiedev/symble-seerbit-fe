@@ -292,7 +292,13 @@ function PublicEvent() {
               will be debited from your wallet.
             </p>
           }
-          acceptFn={() => joinEventHandler()}
+          acceptFn={() => {
+            dispatch(
+              handleShowEnterPinDrawer({
+                nextAction: () => joinEventHandler(),
+              }),
+            );
+          }}
         />
         <FeatureScreen>
           <div className={styles.PublicEvent}>

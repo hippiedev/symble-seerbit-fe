@@ -22,12 +22,14 @@ type Props = {
   value?: string;
   handleSubmit?: () => void;
   isLoading?: boolean;
+  isActiveScreen: boolean;
 };
 
 function SetTransactionPin({
   screenStyles,
   handleScreen,
   value,
+  isActiveScreen,
   handleChange,
 }: Props) {
   return (
@@ -36,7 +38,7 @@ function SetTransactionPin({
         This pin will be required for all transactions
       </p>
       <div className={styles.InputWrap}>
-        <SeperatedInputs value={value} onChange={handleChange} length={4} />
+        <SeperatedInputs autoFocus={isActiveScreen} value={value} onChange={handleChange} length={4} />
       </div>
       <Button
         clicked={() => handleScreen("second-screen")}
@@ -52,13 +54,14 @@ function ConfirmPin({
   value,
   handleChange,
   handleSubmit,
+  isActiveScreen,
   isLoading,
 }: Props) {
   return (
     <div style={screenStyles} className={styles.TransactionPin}>
       <p className={styles.Text}>Retype the PIN you set</p>
       <div className={styles.InputWrap}>
-        <SeperatedInputs value={value} onChange={handleChange} length={4} />
+        <SeperatedInputs autoFocus={isActiveScreen} value={value} onChange={handleChange} length={4} />
       </div>
       <Button
         disabled={isLoading}
@@ -100,6 +103,9 @@ function TransactionPin() {
         const response = await setPin(`${confirmPin}`).unwrap();
         dispatch(onSetPin(response));
         setShowModal(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
         console.log(response);
       } catch (e) {
         console.log(e);
@@ -118,9 +124,6 @@ function TransactionPin() {
 
   const handleShowModal = () => {
     setShowModal(false);
-    setTimeout(() => {
-      navigate("/");
-    }, 800);
   };
 
   return (
@@ -157,6 +160,7 @@ function TransactionPin() {
           handleScreen={(nextScreen) => handleScreenDisplay(nextScreen)}
           value={transactionPin}
           handleChange={handleTransactionPin}
+          isActiveScreen={currentScreen === "first-screen"}
           screenStyles={{
             transform:
               currentScreen === "first-screen"
@@ -171,6 +175,7 @@ function TransactionPin() {
           handleChange={handleConfirmPin}
           handleSubmit={onSubmit}
           isLoading={isLoading}
+          isActiveScreen={currentScreen === "second-screen"}
           screenStyles={{
             transform:
               currentScreen === "second-screen"

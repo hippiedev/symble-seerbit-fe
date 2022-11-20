@@ -24,7 +24,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     validatePin: builder.mutation<{ message: string; }, string>({
       query: (pin) => ({
-        url: `wallet/validate-pin`,
+        url: `wallets/validate-pin`,
         method: "post",
         data: { pin },
       }),
