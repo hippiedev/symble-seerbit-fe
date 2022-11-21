@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from "react";
 import {
   DeviceType,
   selectHMSMessages,
@@ -10,33 +10,35 @@ import {
   useDevices,
   useHMSActions,
   useHMSStore,
-} from '@100mslive/react-sdk';
-import { useSwipeable } from 'react-swipeable';
-import { useLocation, useNavigate } from 'react-router-dom';
-import styles from './LiveControls.module.scss';
-import { ReactComponent as MoneyIcon } from '../../../assets/icons/cil_money.svg';
-import { ReactComponent as HeartIcon } from '../../../assets/icons/heartIcon.svg';
-import { ReactComponent as ShoppingBagIcon } from '../../../assets/icons/shoppingBagIcon.svg';
-import { ReactComponent as CameraSwitchIcon } from '../../../assets/icons/cameraSwitchIcon.svg';
-import { ReactComponent as CameraOffIcon } from '../../../assets/icons/CameraOffIcon.svg';
-import { ReactComponent as CameraOnIcon } from '../../../assets/icons/CameraOnIcon.svg';
-import { ReactComponent as MicOnIcon } from '../../../assets/icons/micOnIcon.svg';
-import { ReactComponent as MicOffIcon } from '../../../assets/icons/MicOffIcon.svg';
-import { useAppSelector } from '../../../redux/hooks';
-import Drawer from '../../../components/UI/molecules/Drawer/Drawer';
-import Button from '../../../components/UI/atoms/Button/Button';
-import LiveMessages from '../../../components/UI/molecules/LiveMessages/LiveMessages';
-import { LiveVideoInput } from '../../../components/UI/atoms/Input/Input';
-import Likes from '../../../components/UI/molecules/Likes/Likes';
+} from "@100mslive/react-sdk";
+import { useSwipeable } from "react-swipeable";
+import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./LiveControls.module.scss";
+import { ReactComponent as MoneyIcon } from "../../../assets/icons/cil_money.svg";
+import { ReactComponent as HeartIcon } from "../../../assets/icons/heartIcon.svg";
+import { ReactComponent as ShoppingBagIcon } from "../../../assets/icons/shoppingBagIcon.svg";
+import { ReactComponent as CameraSwitchIcon } from "../../../assets/icons/cameraSwitchIcon.svg";
+import { ReactComponent as CameraOffIcon } from "../../../assets/icons/CameraOffIcon.svg";
+import { ReactComponent as CameraOnIcon } from "../../../assets/icons/CameraOnIcon.svg";
+import { ReactComponent as MicOnIcon } from "../../../assets/icons/micOnIcon.svg";
+import { ReactComponent as MicOffIcon } from "../../../assets/icons/MicOffIcon.svg";
+import { useAppSelector } from "../../../redux/hooks";
+import Drawer from "../../../components/UI/molecules/Drawer/Drawer";
+import Button from "../../../components/UI/atoms/Button/Button";
+import LiveMessages from "../../../components/UI/molecules/LiveMessages/LiveMessages";
+import { LiveVideoInput } from "../../../components/UI/atoms/Input/Input";
+import Likes from "../../../components/UI/molecules/Likes/Likes";
 import {
   useEndEventMutation,
   useSprayMoneyMutation,
-} from '../../../redux/feature/events/eventsApiSlice';
-import { RootState } from '../../../redux/store';
-import { EventRoom } from '../../../constants/types';
-import SpraySettings from '../../../components/organisms/SpraySettings/SpraySettings';
-import LiveProducts from '../../../components/organisms/LiveProducts/LiveProducts';
-import Spinner from '../../../components/UI/atoms/Spinner/Spinner';
+} from "../../../redux/feature/events/eventsApiSlice";
+import { RootState } from "../../../redux/store";
+import { EventRoom } from "../../../constants/types";
+import SpraySettings from "../../../components/organisms/SpraySettings/SpraySettings";
+import LiveProducts from "../../../components/organisms/LiveProducts/LiveProducts";
+import Spinner from "../../../components/UI/atoms/Spinner/Spinner";
+import { useToast } from "@chakra-ui/react";
+import Toast from "../../../components/UI/molecules/Toast/Toast";
 
 function LiveControls({
   children,
@@ -48,7 +50,7 @@ function LiveControls({
   roomData: EventRoom | undefined;
 }) {
   const user = useAppSelector(
-    (state: import('../../../redux/store').RootState) => state.auth.user,
+    (state: import("../../../redux/store").RootState) => state.auth.user
   );
   // const [messages, setMessages] = useState<
   //   { senderName: string; text: string; senderId: string }[] | []
@@ -56,14 +58,14 @@ function LiveControls({
   const [likes, setLikes] = useState<string[] | []>([]);
   const allMessages = useHMSStore(selectHMSMessages);
   const { selectedDeviceIDs, updateDevice } = useDevices();
-  console.log('devices', selectedDeviceIDs);
+  console.log("devices", selectedDeviceIDs);
   const hmsActions = useHMSActions();
   console.log(allMessages);
 
   const [sprayAmounts, setSprayAmounts] = useState<number[]>([]);
   const [timesSprayed, setTimesSprayed] = useState<number>(0);
   const spraySettings = useAppSelector(
-    (state: RootState) => state.events.liveSpraySettings,
+    (state: RootState) => state.events.liveSpraySettings
   );
   const [
     sprayMoney,
@@ -77,7 +79,7 @@ function LiveControls({
   const location = useLocation();
   const from =
     (location as { state: { from: { pathname: string } } }).state?.from
-      ?.pathname || '/';
+      ?.pathname || "/";
   // const [message, setMessage] = useState<string>('')
 
   const leaveMeeting = async () => {
@@ -85,12 +87,12 @@ function LiveControls({
     if (spraySettings && !spraySuccess) {
       const sprayAmount = sprayAmounts.reduce(
         (total, currAmount) => total + currAmount,
-        0,
+        0
       );
       try {
         const response = await sprayMoney({
           sprayAmount,
-          eventCode: roomData?.event?.event_code || '',
+          eventCode: roomData?.event?.event_code || "",
         }).unwrap();
         console.log(response);
       } catch (e) {
@@ -109,12 +111,12 @@ function LiveControls({
     if (!endEventSuccess) {
       try {
         const response = await endEvent(
-          `${roomData?.event.event_code}`,
+          `${roomData?.event.event_code}`
         ).unwrap();
         console.log(response);
         try {
           const lock = true; // set to true to disallow rejoins
-          const reason = 'live has ended';
+          const reason = "live has ended";
           await hmsActions.endRoom(lock, reason);
         } catch (error) {
           // Permission denied or not connected to room
@@ -135,10 +137,10 @@ function LiveControls({
   }, [hmsActions]);
 
   // const [hasEndedMessage, setHasEndedMessage] = useState<string | undefined>();
-  const [showDrawer, setShowDrawer] = useState<'products' | 'spray' | null>(
-    null,
+  const [showDrawer, setShowDrawer] = useState<"products" | "spray" | null>(
+    null
   );
-  const [participantMessage, setParticipantMessage] = useState<string>('');
+  const [participantMessage, setParticipantMessage] = useState<string>("");
   const [showSprayFeedback, setShowSprayFeedback] = useState<boolean>(false);
   useEffect(() => {
     if (sprayAmounts.length !== 0) {
@@ -146,7 +148,7 @@ function LiveControls({
       setTimeout(() => setShowSprayFeedback(false), 1000);
     }
 
-    console.log('sprayed', sprayAmounts);
+    console.log("sprayed", sprayAmounts);
     return () => setShowSprayFeedback(false);
   }, [sprayAmounts]);
   const handleMessage = (e) => {
@@ -156,7 +158,7 @@ function LiveControls({
   const handleSendMessage = () => {
     if (participantMessage.trim().length > 0) {
       hmsActions.sendBroadcastMessage(participantMessage);
-      setParticipantMessage('');
+      setParticipantMessage("");
     }
   };
   const onEventChange = useCallback((msg: { like: string }) => {
@@ -164,13 +166,26 @@ function LiveControls({
     setLikes((prevLikes) => [...prevLikes, msg.like]);
   }, []);
   const { sendEvent } = useCustomEvent({
-    type: 'LIKE',
+    type: "LIKE",
     onEvent: onEventChange,
   });
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && participantMessage) {
+    if (e.key === "Enter" && participantMessage) {
       handleSendMessage();
     }
+  };
+  const toast = useToast();
+  const showToast = () => {
+    toast({
+      position: "top",
+      duration: 1500,
+      render: () => (
+        <Toast
+          message={`You are making it rain with ${spraySettings?.singleSprayAmount}`}
+          sprayAmounts={sprayAmounts}
+        />
+      ),
+    });
   };
   const handlers = useSwipeable({
     onSwipedUp: () => {
@@ -180,20 +195,24 @@ function LiveControls({
           spraySettings.singleSprayAmount,
         ]);
         setTimesSprayed((prevState) => prevState + 1);
+        if (toast.length < 5) {
+          showToast();
+          console.log(toast.length);
+        }
       } else if (timesSprayed >= (spraySettings?.numberOfSprays || 0)) {
-        console.log('nope');
+        console.log("nope");
       }
     },
     swipeDuration: 400,
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
-  const handleShowDrawer = (arg: 'products' | 'spray') => {
+  const handleShowDrawer = (arg: "products" | "spray") => {
     setShowDrawer(arg);
   };
   let drawerContent;
   switch (showDrawer) {
-    case 'products':
+    case "products":
       drawerContent = (
         <LiveProducts
           user={roomData?.event.owner.id}
@@ -201,7 +220,7 @@ function LiveControls({
         />
       );
       break;
-    case 'spray':
+    case "spray":
       drawerContent = <SpraySettings closeDrawer={() => setShowDrawer(null)} />;
       break;
     default:
@@ -236,18 +255,9 @@ function LiveControls({
         {drawerContent}
       </Drawer>
       <section className={styles.LiveHeader}>
-        <div
-          style={{ opacity: showSprayFeedback ? 1 : 0 }}
-          className={styles.FeedbackWrap}
-        >
-          <div className={styles.SprayFeedback}>
-            You are making it rain with {spraySettings?.singleSprayAmount}
-          </div>
-          <span>+ {sprayAmounts.length}</span>
-        </div>
         <div className={styles.LiveHeaderDetails}>
           <div className={styles.Heading}>
-            <img src={user?.avatar || ''} alt={roomData?.event.name} />
+            <img src={user?.avatar || ""} alt={roomData?.event.name} />
             <h1>{roomData?.event.name}</h1>
           </div>
           <div className={styles.Details}>
@@ -261,19 +271,19 @@ function LiveControls({
               type="submit"
               clicked={!isOwner ? leaveMeeting : endMeeting}
               buttonStyles={{
-                backgroundColor: '#D82B2B',
-                height: '39px',
-                borderRadius: '10px',
-                padding: '10px 26.5px',
+                backgroundColor: "#D82B2B",
+                height: "39px",
+                borderRadius: "10px",
+                padding: "10px 26.5px",
               }}
             >
               {sprayLoading && !isOwner
-                ? 'Leaving...'
+                ? "Leaving..."
                 : isOwner && isEnding
-                ? 'Ending...'
+                ? "Ending..."
                 : isOwner
-                ? 'End'
-                : 'Leave'}
+                ? "End"
+                : "Leave"}
             </Button>
             {isOwner ? (
               <div className={styles.Controls}>
@@ -316,7 +326,7 @@ function LiveControls({
       </section>
       <section className={styles.LiveFooter}>
         <LiveMessages
-          ownerId={roomData?.event.owner.id || ''}
+          ownerId={roomData?.event.owner.id || ""}
           messages={allMessages}
         />
         <div className={styles.LiveInput}>
@@ -330,16 +340,16 @@ function LiveControls({
         <div className={styles.liveActions}>
           <Likes likes={likes} />
           <div
-            onClick={() => sendEvent({ like: user?.id || '' })}
+            onClick={() => sendEvent({ like: user?.id || "" })}
             className={styles.Action}
           >
             <HeartIcon />
           </div>
           <div className={styles.Action}>
-            <MoneyIcon onClick={() => handleShowDrawer('spray')} />
+            <MoneyIcon onClick={() => handleShowDrawer("spray")} />
           </div>
           <div className={styles.Action}>
-            <ShoppingBagIcon onClick={() => handleShowDrawer('products')} />
+            <ShoppingBagIcon onClick={() => handleShowDrawer("products")} />
           </div>
         </div>
       </section>
