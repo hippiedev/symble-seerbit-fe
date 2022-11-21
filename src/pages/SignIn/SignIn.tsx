@@ -1,28 +1,28 @@
 /* eslint-disable no-useless-escape */
-import { useState, useEffect } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
-import { gapi } from 'gapi-script';
-import { GoogleLogin } from 'react-google-login';
-import styles from './SignIn.module.scss';
-import Button from '../../components/UI/atoms/Button/Button';
-import AuthScreen from '../../components/template/AuthScreen/AuthScreen';
-import { TextInput } from '../../components/UI/atoms/Input/Input';
-import eyeSlashed from '../../assets/icons/eyeSlashed.svg';
-import line from '../../assets/icons/Line.svg';
-import { ReactComponent as GoogleLogo } from '../../assets/icons/googleLogo.svg';
+import { useState, useEffect } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Link } from "react-router-dom";
+import { gapi } from "gapi-script";
+import { GoogleLogin } from "react-google-login";
+import styles from "./SignIn.module.scss";
+import Button from "../../components/UI/atoms/Button/Button";
+import AuthScreen from "../../components/template/AuthScreen/AuthScreen";
+import { TextInput } from "../../components/UI/atoms/Input/Input";
+import eyeSlashed from "../../assets/icons/eyeSlashed.svg";
+import line from "../../assets/icons/Line.svg";
+import { ReactComponent as GoogleLogo } from "../../assets/icons/googleLogo.svg";
 // import facebookLogo from '../../assets/icons/facebookLogo.png';
 // import twitterLogo from '../../assets/icons/twitterLogo.png';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { onLogin, onGoogleLogin } from '../../redux/feature/auth/authSlice';
-import eyeOpen from '../../assets/icons/eyeOpen.svg';
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { onLogin, onGoogleLogin } from "../../redux/feature/auth/authSlice";
+import eyeOpen from "../../assets/icons/eyeOpen.svg";
 import {
   useGoogleSignInMutation,
   useLoginMutation,
-} from '../../redux/feature/auth/authApiSlice';
-import Popup from '../../components/UI/molecules/Popup/Popup';
-import Spinner from '../../components/UI/atoms/Spinner/Spinner';
+} from "../../redux/feature/auth/authApiSlice";
+import Popup from "../../components/UI/molecules/Popup/Popup";
+import Spinner from "../../components/UI/atoms/Spinner/Spinner";
 // import { BASE_URL } from '../../constants/values';
 // import { apiInstance } from '../../services/apiInstance';
 
@@ -30,25 +30,18 @@ function SignIn() {
   const dispatch = useAppDispatch();
   const [login, { isLoading, isSuccess, error, isError }] = useLoginMutation();
   const [isVisible, setIsVisible] = useState(false);
-  const [
-    googleSignIn,
-    {
-      isLoading: googleLoading,
-      isSuccess: googleSuccess,
-      isError: hasGoogleError,
-      error: googleError,
-    },
-  ] = useGoogleSignInMutation();
+  const [googleSignIn, { isLoading: googleLoading, isSuccess: googleSuccess }] =
+    useGoogleSignInMutation();
 
   // select values from the auth splice
   const { hasPin, message, isAuthenticated } = useAppSelector(
-    (state: import('../../redux/store').RootState) => state.auth,
+    (state: import("../../redux/store").RootState) => state.auth
   );
 
   // initial input values
   const initialValues = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   };
   const onSubmit = async (values: { email: string; password: string }) => {
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -72,11 +65,12 @@ function SignIn() {
   useEffect(() => {
     const initClient = () => {
       gapi.client.init({
-        clientId: '46102556524-sb6bo0sbjrvavu8jc77mj7hem6tfnj8l.apps.googleusercontent.com',
-        scope: '',
+        clientId:
+          "46102556524-sb6bo0sbjrvavu8jc77mj7hem6tfnj8l.apps.googleusercontent.com",
+        scope: "",
       });
     };
-    gapi.load('client:auth2', initClient);
+    gapi.load("client:auth2", initClient);
   });
 
   const handleSocialLogin = async (googleData) => {
@@ -92,8 +86,8 @@ function SignIn() {
 
   // define validation schema for input fields
   const validationSchema = Yup.object({
-    email: Yup.string().required('This is a required field'),
-    password: Yup.string().required('This is a required field'),
+    email: Yup.string().required("This is a required field"),
+    password: Yup.string().required("This is a required field"),
   });
 
   const formik = useFormik({
@@ -103,29 +97,23 @@ function SignIn() {
   });
   if (isSuccess || isAuthenticated) {
     if (!hasPin) {
-      window.location.replace('/categories');
+      window.location.replace("/categories");
     } else {
-      window.location.replace('/');
+      window.location.replace("/");
     }
   }
 
   return (
     <>
       <Popup
-        show={
-          isSuccess || isError || !!message || googleSuccess || hasGoogleError
-        }
+        show={isSuccess || isError || !!message || googleSuccess}
         variant={
-          isSuccess || googleSuccess
-            ? 'success'
-            : isError || hasGoogleError
-            ? 'error'
-            : undefined
+          isSuccess || googleSuccess ? "success" : isError ? "error" : undefined
         }
         message={
           isSuccess || googleSuccess
             ? message || undefined
-            : isError || hasGoogleError
+            : isError
             ? (
                 error as {
                   status: number;
@@ -137,18 +125,6 @@ function SignIn() {
                   status: number;
                   data: string;
                 }
-              )?.data ||
-              (
-                googleError as {
-                  status: number;
-                  data: { code: number; message: string };
-                }
-              )?.data?.message ||
-              (
-                googleError as {
-                  status: number;
-                  data: string;
-                }
               )?.data
             : message || undefined
         }
@@ -157,7 +133,7 @@ function SignIn() {
         title="Let's sign in"
         description={
           <p>
-            Don’t have an account?{' '}
+            Don’t have an account?{" "}
             <Link to="/sign-up">
               <span>Sign up</span>
             </Link>
@@ -182,7 +158,7 @@ function SignIn() {
             </div>
             <div className={styles.InputWrap}>
               <TextInput
-                type={isVisible ? 'text' : 'password'}
+                type={isVisible ? "text" : "password"}
                 id="password"
                 inputName="Password"
                 onChange={formik.handleChange}
@@ -215,7 +191,7 @@ function SignIn() {
             </div>
             <div>
               <GoogleLogin
-                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || ''}
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || ""}
                 render={(renderProps) => (
                   <button
                     type="button"
@@ -223,11 +199,11 @@ function SignIn() {
                     onClick={renderProps.onClick}
                     className={styles.GoogleAuth}
                   >
-                    <GoogleLogo />{' '}
+                    <GoogleLogo />{" "}
                     {renderProps.disabled || googleLoading ? (
                       <Spinner />
                     ) : (
-                      'Google'
+                      "Google"
                     )}
                   </button>
                 )}

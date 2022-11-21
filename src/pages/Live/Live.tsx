@@ -67,6 +67,7 @@ function LiveRoom() {
                 width: "100%",
                 objectFit: "cover",
               }}
+              className={styles.LiveVideo}
               ref={videoRef || ""}
               autoPlay
               muted

@@ -12,6 +12,10 @@
   justify-content: space-between;
   background-color: #000;
 }
+.LiveVideo {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
 
 iframe,
 video {
