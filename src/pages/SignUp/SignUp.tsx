@@ -106,13 +106,15 @@ function SignIn() {
   });
 
   const handleSocialSignUp = async (googleData) => {
-    try {
-      const res = await googleSignUp({ token: googleData.tokenId }).unwrap();
-      console.log(googleData);
-      console.log(res);
-      dispatch(onGoogleSignUp(res));
-    } catch (e) {
-      console.log(e);
+    if (googleData.tokenId) {
+      try {
+        const res = await googleSignUp({ token: googleData.tokenId }).unwrap();
+        console.log(googleData);
+        console.log(res);
+        dispatch(onGoogleSignUp(res));
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 

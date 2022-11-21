@@ -30,8 +30,15 @@ function SignIn() {
   const dispatch = useAppDispatch();
   const [login, { isLoading, isSuccess, error, isError }] = useLoginMutation();
   const [isVisible, setIsVisible] = useState(false);
-  const [googleSignIn, { isLoading: googleLoading, isSuccess: googleSuccess }] =
-    useGoogleSignInMutation();
+  const [
+    googleSignIn,
+    {
+      isLoading: googleLoading,
+      isSuccess: googleSuccess,
+      isError: hasGoogleError,
+      error: googleError,
+    },
+  ] = useGoogleSignInMutation();
 
   // select values from the auth splice
   const { hasPin, message, isAuthenticated } = useAppSelector(
@@ -74,13 +81,15 @@ function SignIn() {
   });
 
   const handleSocialLogin = async (googleData) => {
-    try {
-      const res = await googleSignIn({ token: googleData.tokenId }).unwrap();
-      console.log(googleData);
-      console.log(res);
-      dispatch(onGoogleLogin(res));
-    } catch (e) {
-      console.log(e);
+    if (googleData.tokenId) {
+      try {
+        const res = await googleSignIn({ token: googleData.tokenId }).unwrap();
+        console.log(googleData);
+        console.log(res);
+        dispatch(onGoogleLogin(res));
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 
@@ -106,14 +115,20 @@ function SignIn() {
   return (
     <>
       <Popup
-        show={isSuccess || isError || !!message || googleSuccess}
+        show={isSuccess || isError || googleSuccess || hasGoogleError}
         variant={
-          isSuccess || googleSuccess ? "success" : isError ? "error" : undefined
+          isSuccess || googleSuccess
+            ? "success"
+            : isError || hasGoogleError
+            ? "error"
+            : message
+            ? "success"
+            : undefined
         }
         message={
           isSuccess || googleSuccess
             ? message || undefined
-            : isError
+            : isError || hasGoogleError
             ? (
                 error as {
                   status: number;
@@ -122,6 +137,18 @@ function SignIn() {
               )?.data?.message ||
               (
                 error as {
+                  status: number;
+                  data: string;
+                }
+              )?.data ||
+              (
+                googleError as {
+                  status: number;
+                  data: { code: number; message: string };
+                }
+              )?.data?.message ||
+              (
+                googleError as {
                   status: number;
                   data: string;
                 }
