@@ -98,7 +98,7 @@ video {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    gap: 20px;
+    gap: 15px;
     align-items: center;
     bottom: 44px;
     padding: 0px 20px;
@@ -109,8 +109,8 @@ video {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 19px;
-    width: fit-content;
+    width: 37%;
+
     // gap: 18px;
 }
 
@@ -127,7 +127,7 @@ video {
 
 .LiveInput {
     flex: 1;
-    width: 100%;
+    width: 65%;
 }
 
 .video {
