@@ -22,7 +22,7 @@ import { ReactComponent as CameraOffIcon } from "../../../assets/icons/CameraOff
 import { ReactComponent as CameraOnIcon } from "../../../assets/icons/CameraOnIcon.svg";
 import { ReactComponent as MicOnIcon } from "../../../assets/icons/micOnIcon.svg";
 import { ReactComponent as MicOffIcon } from "../../../assets/icons/MicOffIcon.svg";
-import { useAppSelector } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import Drawer from "../../../components/UI/molecules/Drawer/Drawer";
 import Button from "../../../components/UI/atoms/Button/Button";
 import LiveMessages from "../../../components/UI/molecules/LiveMessages/LiveMessages";
@@ -39,6 +39,7 @@ import LiveProducts from "../../../components/organisms/LiveProducts/LiveProduct
 import Spinner from "../../../components/UI/atoms/Spinner/Spinner";
 import { useToast } from "@chakra-ui/react";
 import Toast from "../../../components/UI/molecules/Toast/Toast";
+import { handleSetSpraySettings } from "../../../redux/feature/events/eventsSlice";
 
 function LiveControls({
   children,
@@ -55,6 +56,7 @@ function LiveControls({
   // const [messages, setMessages] = useState<
   //   { senderName: string; text: string; senderId: string }[] | []
   // >([]);
+  const dispatch = useAppDispatch();
   const [likes, setLikes] = useState<string[] | []>([]);
   const allMessages = useHMSStore(selectHMSMessages);
   const { selectedDeviceIDs, updateDevice } = useDevices();
@@ -181,7 +183,12 @@ function LiveControls({
       duration: 1500,
       render: () => (
         <Toast
-          message={`You are making it rain with ${spraySettings?.singleSprayAmount}`}
+          message={
+            <p>
+              You are making it rain with &#8358;
+              {spraySettings?.singleSprayAmount.toLocaleString()}
+            </p>
+          }
           sprayAmounts={sprayAmounts}
         />
       ),
@@ -201,6 +208,9 @@ function LiveControls({
         }
       } else if (timesSprayed >= (spraySettings?.numberOfSprays || 0)) {
         console.log("nope");
+        dispatch(handleSetSpraySettings(undefined));
+        setTimesSprayed(0);
+        setSprayAmounts([]);
       }
     },
     swipeDuration: 400,

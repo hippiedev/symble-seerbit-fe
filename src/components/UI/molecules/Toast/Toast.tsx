@@ -12,7 +12,7 @@ function Toast({
     <HStack spacing="24px" className={styles.FeedbackWrap}>
       <div className={styles.Toast}>{message}</div>
       {sprayAmounts && sprayAmounts?.length > 0 ? (
-        <span>+ {sprayAmounts?.length}</span>
+        <span>+ {sprayAmounts?.length + 1}</span>
       ) : null}
     </HStack>
   );

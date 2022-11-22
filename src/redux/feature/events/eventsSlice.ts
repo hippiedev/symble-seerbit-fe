@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Event } from '../../../constants/types';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Event } from "../../../constants/types";
 
 export interface EventState {
   eventData: {
@@ -33,12 +33,12 @@ const initialState: EventState = {
 };
 
 const eventsSlice = createSlice({
-  name: 'events',
+  name: "events",
   initialState,
   reducers: {
     setActiveEventData: (
       state,
-      action: PayloadAction<{ message: string; data: Event }>,
+      action: PayloadAction<{ message: string; data: Event }>
     ) => {
       state.eventData = action.payload?.data;
       state.message = action.payload?.message;
@@ -64,7 +64,7 @@ const eventsSlice = createSlice({
         totalSprayAmount: number;
         numberOfSprays: number;
         singleSprayAmount: number;
-      }>,
+      } | undefined>
     ) => {
       state.liveSpraySettings = action.payload;
     },
