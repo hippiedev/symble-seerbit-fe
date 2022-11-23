@@ -74,7 +74,7 @@ export const authSlice = createSlice({
       action: PayloadAction<{ message: string; url: string; email: string }>
     ) => {
       state.authType = "google";
-      state.message = `${action.payload.message}. Sign in`;
+      state.message = `${action.payload.message}. Sign in with google`;
     },
     onLogin: (
       state: AuthState,

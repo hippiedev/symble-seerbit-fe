@@ -115,7 +115,7 @@ function SignIn() {
   return (
     <>
       <Popup
-        show={isSuccess || isError || googleSuccess || hasGoogleError}
+        show={isSuccess || isError || googleSuccess || hasGoogleError || !!message}
         variant={
           isSuccess || googleSuccess
             ? "success"
