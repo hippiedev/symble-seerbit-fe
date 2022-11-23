@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { Link, Navigate } from "react-router-dom";
-import { gapi } from "gapi-script";
-import GoogleLogin from "react-google-login";
-import styles from "./SignUp.module.scss";
-import Button from "../../components/UI/atoms/Button/Button";
-import AuthScreen from "../../components/template/AuthScreen/AuthScreen";
-import { TextInput } from "../../components/UI/atoms/Input/Input";
-import eyeSlashed from "../../assets/icons/eyeSlashed.svg";
-import line from "../../assets/icons/Line.svg";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { onGoogleSignUp, onSignUp } from "../../redux/feature/auth/authSlice";
-import eyeOpen from "../../assets/icons/eyeOpen.svg";
+import { useEffect, useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { Link, Navigate } from 'react-router-dom';
+import { gapi } from 'gapi-script';
+import GoogleLogin from 'react-google-login';
+import styles from './SignUp.module.scss';
+import Button from '../../components/UI/atoms/Button/Button';
+import AuthScreen from '../../components/template/AuthScreen/AuthScreen';
+import { TextInput } from '../../components/UI/atoms/Input/Input';
+import eyeSlashed from '../../assets/icons/eyeSlashed.svg';
+import line from '../../assets/icons/Line.svg';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { onGoogleSignUp, onSignUp } from '../../redux/feature/auth/authSlice';
+import eyeOpen from '../../assets/icons/eyeOpen.svg';
 import {
   useGoogleSignUpMutation,
   useSignUpMutation,
-} from "../../redux/feature/auth/authApiSlice";
-import Popup from "../../components/UI/molecules/Popup/Popup";
-import { ReactComponent as GoogleLogo } from "../../assets/icons/googleLogo.svg";
-import Spinner from "../../components/UI/atoms/Spinner/Spinner";
+} from '../../redux/feature/auth/authApiSlice';
+import Popup from '../../components/UI/molecules/Popup/Popup';
+import { ReactComponent as GoogleLogo } from '../../assets/icons/googleLogo.svg';
+import Spinner from '../../components/UI/atoms/Spinner/Spinner';
 
 function SignIn() {
   const dispatch = useAppDispatch();
@@ -34,8 +34,8 @@ function SignIn() {
       error: googleError,
     },
   ] = useGoogleSignUpMutation();
-  const { message, authType } = useAppSelector(
-    (state: import("../../redux/store").RootState) => state.auth
+  const { message } = useAppSelector(
+    (state: import('../../redux/store').RootState) => state.auth,
   );
 
   const [signUp, { isLoading, isSuccess, isError, error }] =
@@ -43,10 +43,10 @@ function SignIn() {
 
   // initial input values
   const initialValues = {
-    email: "",
-    username: "",
-    password: "",
-    confirmPassword: "",
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
   };
 
   const onSubmit = async (values: {
@@ -72,21 +72,21 @@ function SignIn() {
   // define validation schema for input fields
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email("Invalid email format")
-      .required("This is a required field"),
+      .email('Invalid email format')
+      .required('This is a required field'),
     username: Yup.string()
-      .required("This is a required field")
-      .max(15, "username must be less than or equal to 15 characters long"),
+      .required('This is a required field')
+      .max(15, 'username must be less than or equal to 15 characters long'),
     password: Yup.string()
-      .required("No password provided.")
-      .min(10, "must be at least 8 characters")
-      .matches(/[A-Z]/, "must contain at least one uppercase letter")
-      .matches(/[a-z]/, "must contain at least one lowercase letter")
-      .matches(/[0-9]/, "must contain at least one number")
-      .matches(/[@$!%*#?&]/, "must contain a special character"),
+      .required('No password provided.')
+      .min(10, 'must be at least 8 characters')
+      .matches(/[A-Z]/, 'must contain at least one uppercase letter')
+      .matches(/[a-z]/, 'must contain at least one lowercase letter')
+      .matches(/[0-9]/, 'must contain at least one number')
+      .matches(/[@$!%*#?&]/, 'must contain a special character'),
     confirmPassword: Yup.string()
-      .required("This is a required field")
-      .oneOf([Yup.ref("password"), null], "Passwords must match"),
+      .required('This is a required field')
+      .oneOf([Yup.ref('password'), null], 'Passwords must match'),
   });
 
   const formik = useFormik({
@@ -99,10 +99,10 @@ function SignIn() {
     const initClient = () => {
       gapi.client.init({
         clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        scope: "",
+        scope: '',
       });
     };
-    gapi.load("client:auth2", initClient);
+    gapi.load('client:auth2', initClient);
   });
 
   const handleSocialSignUp = async (googleData) => {
@@ -124,11 +124,11 @@ function SignIn() {
         show={isSuccess || isError || googleSuccess || hasGoogleError}
         variant={
           isSuccess || googleSuccess
-            ? "success"
+            ? 'success'
             : isError || hasGoogleError
-            ? "error"
+            ? 'error'
             : message
-            ? "success"
+            ? 'success'
             : undefined
         }
         message={
@@ -166,7 +166,7 @@ function SignIn() {
         title="Sign Up"
         description={
           <p>
-            Already have an account?{" "}
+            Already have an account?{' '}
             <Link to="/">
               <span>Sign in</span>
             </Link>
@@ -211,7 +211,7 @@ function SignIn() {
             <div className={styles.InputWrap}>
               <TextInput
                 inputName="Password"
-                type={isVisible ? "text" : "password"}
+                type={isVisible ? 'text' : 'password'}
                 name="password"
                 inputAdornment={isVisible ? eyeSlashed : eyeOpen}
                 value={formik.values.password}
@@ -226,7 +226,7 @@ function SignIn() {
             </div>
             <div className={styles.InputWrap}>
               <TextInput
-                type={isConfirmPasswordVisible ? "text" : "password"}
+                type={isConfirmPasswordVisible ? 'text' : 'password'}
                 inputName="Confirm Password"
                 inputAdornment={isConfirmPasswordVisible ? eyeSlashed : eyeOpen}
                 value={formik.values.confirmPassword}
@@ -262,7 +262,7 @@ function SignIn() {
             </div>
             <div>
               <GoogleLogin
-                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || ""}
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || ''}
                 render={(renderProps) => (
                   <button
                     type="button"
@@ -270,11 +270,11 @@ function SignIn() {
                     onClick={renderProps.onClick}
                     className={styles.GoogleAuth}
                   >
-                    <GoogleLogo />{" "}
+                    <GoogleLogo />{' '}
                     {renderProps.disabled || googleLoading ? (
                       <Spinner />
                     ) : (
-                      "Google"
+                      'Google'
                     )}
                   </button>
                 )}

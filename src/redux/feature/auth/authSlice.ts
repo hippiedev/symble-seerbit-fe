@@ -1,21 +1,21 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable @typescript-eslint/no-shadow */
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EXPIRES_IN } from "../../../constants/values";
-import { User } from "../../../constants/types";
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { EXPIRES_IN } from '../../../constants/values';
+import { User } from '../../../constants/types';
 // import { RootState, AppThunk } from '../../store';
 import {
   checkTimeout,
   forgotPassword,
   logout,
   setAuthToken,
-} from "./authApiSlice";
+} from './authApiSlice';
 
 // Get user from localStorage
 
-const user = localStorage.getItem("user");
-const token = localStorage.getItem("token");
-const hasPin = localStorage.getItem("hasPin");
+const user = localStorage.getItem('user');
+const token = localStorage.getItem('token');
+const hasPin = localStorage.getItem('hasPin');
 
 export interface AuthState {
   userId: string | null;
@@ -26,7 +26,7 @@ export interface AuthState {
   loading: boolean;
   token: string | null;
   isAuthenticated: boolean;
-  authType: "google" | "default";
+  authType: 'google' | 'default';
 }
 
 const initialState: AuthState = {
@@ -36,13 +36,13 @@ const initialState: AuthState = {
   message: null,
   error: null,
   loading: false,
-  token: token ? JSON.parse(token) : "",
+  token: token ? JSON.parse(token) : '',
   isAuthenticated: !!token,
-  authType: "default",
+  authType: 'default',
 };
 
 export const forgotPasswordAsync = createAsyncThunk(
-  "auth/forgot-password",
+  'auth/forgot-password',
   async (email: string, thunkAPI) => {
     try {
       const response = await forgotPassword(email);
@@ -51,29 +51,29 @@ export const forgotPasswordAsync = createAsyncThunk(
       // return error
       return thunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
-export const logoutAsync = createAsyncThunk("auth/logout", async () => {
+export const logoutAsync = createAsyncThunk('auth/logout', async () => {
   await logout();
 });
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     onSignUp: (
       state: AuthState,
-      action: PayloadAction<{ message: string; url: string; email: string }>
+      action: PayloadAction<{ message: string; url: string; email: string }>,
     ) => {
-      state.authType = "default";
+      state.authType = 'default';
       state.message = action.payload.message;
     },
     onGoogleSignUp: (
       state: AuthState,
-      action: PayloadAction<{ message: string; url: string; email: string }>
+      action: PayloadAction<{ message: string; url: string; email: string }>,
     ) => {
-      state.authType = "google";
+      state.authType = 'google';
       state.message = `${action.payload.message}. Sign in with google`;
     },
     onLogin: (
@@ -84,10 +84,10 @@ export const authSlice = createSlice({
         hasPin: boolean;
         access: { token: string; expires: string };
         refresh: { token: string; expires: string };
-      }>
+      }>,
     ) => {
       const { data, message, hasPin, access, refresh } = action.payload;
-      state.authType = "default";
+      state.authType = 'default';
       state.loading = false;
       state.user = data;
       state.message = message;
@@ -97,11 +97,11 @@ export const authSlice = createSlice({
       state.isAuthenticated = true;
       console.log(access.token);
       setAuthToken(access.token);
-      localStorage.setItem("hasPin", `${hasPin}`);
-      localStorage.setItem("user", JSON.stringify(data));
-      localStorage.setItem("token", JSON.stringify(access.token));
-      localStorage.setItem("refreshToken", JSON.stringify(refresh.token));
-      localStorage.setItem("expirationDate", `${access.expires}`);
+      localStorage.setItem('hasPin', `${hasPin}`);
+      localStorage.setItem('user', JSON.stringify(data));
+      localStorage.setItem('token', JSON.stringify(access.token));
+      localStorage.setItem('refreshToken', JSON.stringify(refresh.token));
+      localStorage.setItem('expirationDate', `${access.expires}`);
       checkTimeout(EXPIRES_IN);
       console.log(action.payload);
     },
@@ -113,10 +113,10 @@ export const authSlice = createSlice({
         hasPin: boolean;
         access: { token: string; expires: string };
         refresh: { token: string; expires: string };
-      }>
+      }>,
     ) => {
       const { user, message, hasPin, access, refresh } = action.payload;
-      state.authType = "google";
+      state.authType = 'google';
       state.loading = false;
       state.user = user;
       state.message = message;
@@ -126,11 +126,11 @@ export const authSlice = createSlice({
       state.isAuthenticated = true;
       console.log(access.token);
       setAuthToken(access.token);
-      localStorage.setItem("hasPin", `${hasPin}`);
-      localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("token", JSON.stringify(access.token));
-      localStorage.setItem("refreshToken", JSON.stringify(refresh.token));
-      localStorage.setItem("expirationDate", `${access.expires}`);
+      localStorage.setItem('hasPin', `${hasPin}`);
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', JSON.stringify(access.token));
+      localStorage.setItem('refreshToken', JSON.stringify(refresh.token));
+      localStorage.setItem('expirationDate', `${access.expires}`);
       checkTimeout(EXPIRES_IN);
       console.log(action.payload);
     },
@@ -149,17 +149,17 @@ export const authSlice = createSlice({
       action: PayloadAction<{
         access: { token: string; expires: string };
         refresh: { token: string; expires: string };
-      }>
+      }>,
     ) => {
       const { access, refresh } = action.payload;
       state.token = access.token;
-      localStorage.setItem("refreshToken", JSON.stringify(refresh.token));
-      localStorage.setItem("token", JSON.stringify(access.token));
-      localStorage.setItem("expirationDate", `${access.expires}`);
+      localStorage.setItem('refreshToken', JSON.stringify(refresh.token));
+      localStorage.setItem('token', JSON.stringify(access.token));
+      localStorage.setItem('expirationDate', `${access.expires}`);
     },
     resetPassword: (
       state,
-      action: PayloadAction<{ message: string; redirectUrl: string }>
+      action: PayloadAction<{ message: string; redirectUrl: string }>,
     ) => {
       state.message = action.payload.message;
     },
@@ -167,7 +167,7 @@ export const authSlice = createSlice({
       state.user = action.payload;
     },
     onFirstLogin: (state) => {
-      state.message = "You are all set up!";
+      state.message = 'You are all set up!';
     },
   },
   extraReducers: (builder) => {
@@ -183,7 +183,7 @@ export const authSlice = createSlice({
       .addCase(forgotPasswordAsync.pending, (state) => {
         state.user = null;
         state.isAuthenticated = false;
-        state.token = "";
+        state.token = '';
         state.loading = true;
       })
       .addCase(forgotPasswordAsync.fulfilled, (state, action) => {
@@ -191,7 +191,7 @@ export const authSlice = createSlice({
         state.message = action?.payload?.message;
       })
       .addCase(forgotPasswordAsync.rejected, (state) => {
-        state.message = "Success";
+        state.message = 'Success';
         state.loading = false;
       });
   },

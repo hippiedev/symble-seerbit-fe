@@ -14,9 +14,9 @@ function Product({
     <div className={styles.Product}>
       <img src={images[0]} alt={name} />
       <p id={styles.ProductName}>{name}</p>
-      <p id={styles.ProductPrice}>&#8358;{`${Number(
-        price,
-      ).toLocaleString()}`}</p>
+      <p id={styles.ProductPrice}>
+        &#8358;{`${Number(price).toLocaleString()}`}
+      </p>
     </div>
   );
 }

@@ -179,7 +179,6 @@ function NavItems() {
 }
 
 function Header() {
-  const navigate = useNavigate();
   return (
     <header className={styles.Header}>
       <div className={styles.TopHeader}>

@@ -1,5 +1,5 @@
-import { Notification, Product, User } from "../../../constants/types";
-import { apiSlice } from "../../apiSlice";
+import { Notification, Product, User } from '../../../constants/types';
+import { apiSlice } from '../../apiSlice';
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,57 +9,57 @@ export const userApiSlice = apiSlice.injectEndpoints({
     >({
       query: ({ updateData, username }) => ({
         url: `users/${username}`,
-        method: "post",
+        method: 'post',
         data: updateData,
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ['User'],
     }),
     setPin: builder.mutation<{ message: string; data: User }, string>({
       query: (pin) => ({
         url: `auth/pin`,
-        method: "post",
+        method: 'post',
         data: { pin },
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ['User'],
     }),
-    validatePin: builder.mutation<{ message: string; }, string>({
+    validatePin: builder.mutation<{ message: string }, string>({
       query: (pin) => ({
         url: `wallets/validate-pin`,
-        method: "post",
+        method: 'post',
         data: { pin },
       }),
     }),
     getUser: builder.query<User, string>({
       query: (payload) => ({
         url: `users/${payload}`,
-        method: "get",
+        method: 'get',
       }),
-      providesTags: ["User"],
+      providesTags: ['User'],
       transformResponse: (response) =>
         (response as { message: string; data: User }).data,
     }),
     getAllUsers: builder.query<{ message: string; data: User[] }, undefined>({
       query: () => ({
         url: `users/`,
-        method: "get",
+        method: 'get',
       }),
-      providesTags: ["User"],
+      providesTags: ['User'],
     }),
     getAuthUser: builder.query<User, undefined>({
       query: () => ({
         url: `account/`,
-        method: "get",
+        method: 'get',
       }),
-      providesTags: ["User"],
+      providesTags: ['User'],
       transformResponse: (response) =>
         (response as { message: string; data: User }).data,
     }),
     getUserProducts: builder.query<Product[] | [], string>({
       query: (payload) => ({
         url: `users/${payload}`,
-        method: "get",
+        method: 'get',
       }),
-      providesTags: ["User"],
+      providesTags: ['User'],
       transformResponse: (response) =>
         (response as { message: string; data: User }).data.products,
     }),
@@ -72,17 +72,17 @@ export const userApiSlice = apiSlice.injectEndpoints({
     >({
       query: (username) => ({
         url: `users/${username}/follows`,
-        method: "post",
+        method: 'post',
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ['User'],
     }),
     closeAccount: builder.mutation<{ message: string }, { id: string }>({
       query: ({ id }) => ({
         url: `users/`,
-        method: "delete",
+        method: 'delete',
         data: { _id: id },
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ['User'],
     }),
     getNotifcations: builder.query<
       { message: string; result: Notification[] },
@@ -90,7 +90,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     >({
       query: (id) => ({
         url: `notifications/`,
-        method: "get",
+        method: 'get',
         data: { id },
       }),
     }),

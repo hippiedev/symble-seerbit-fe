@@ -1,13 +1,11 @@
-import { CSSProperties, useState } from "react";
-import { useAppSelector } from "../../../redux/hooks";
-import { RootState } from "../../../redux/store";
-import Button from "../../UI/atoms/Button/Button";
-import { SeperatedInputs } from "../../UI/atoms/Input/Input";
-import styles from "./EnterPin.module.scss";
-import Backdrop from "../../UI/atoms/Backdrop/Backdrop";
-import { ReactComponent as CancelIcon } from "../../../assets/icons/x.svg";
-import Popup from "../../UI/molecules/Popup/Popup";
-import { useValidatePinMutation } from "../../../redux/feature/user/userApiSlice";
+import { CSSProperties, useState } from 'react';
+import Button from '../../UI/atoms/Button/Button';
+import { SeperatedInputs } from '../../UI/atoms/Input/Input';
+import styles from './EnterPin.module.scss';
+import Backdrop from '../../UI/atoms/Backdrop/Backdrop';
+import { ReactComponent as CancelIcon } from '../../../assets/icons/x.svg';
+import Popup from '../../UI/molecules/Popup/Popup';
+import { useValidatePinMutation } from '../../../redux/feature/user/userApiSlice';
 
 type Props = {
   closeDrawer: () => void;
@@ -17,12 +15,11 @@ type Props = {
 };
 
 function EnterPin({ closeDrawer, show, drawerStyles, action }: Props) {
-  const user = useAppSelector((state: RootState) => state.auth.user);
-  const [pin, setPin] = useState<string>("");
-  const [error, setError] = useState<string>("");
-  const [validatePin, { isSuccess, isLoading }] = useValidatePinMutation();
+  const [pin, setPin] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [validatePin, { isLoading }] = useValidatePinMutation();
   const handlePinChange = (value) => {
-    setError("");
+    setError('');
     setPin(value);
   };
   const handleProceed = async () => {
@@ -33,10 +30,10 @@ function EnterPin({ closeDrawer, show, drawerStyles, action }: Props) {
         action();
       }
       closeDrawer();
-      setPin("");
+      setPin('');
     } catch (e) {
-      setError("incorrect pin");
-      setPin("");
+      setError('incorrect pin');
+      setPin('');
       console.log(e);
     }
   };
@@ -45,8 +42,8 @@ function EnterPin({ closeDrawer, show, drawerStyles, action }: Props) {
       <Backdrop clicked={closeDrawer} show={show} />
       <div
         style={{
-          transform: show ? "translateY(0)" : "translateY(200%)",
-          opacity: show ? "1" : "0",
+          transform: show ? 'translateY(0)' : 'translateY(200%)',
+          opacity: show ? '1' : '0',
           zIndex: show ? 1000 : -1,
           ...drawerStyles,
         }}
@@ -65,7 +62,7 @@ function EnterPin({ closeDrawer, show, drawerStyles, action }: Props) {
           />
           <Button
             disabled={pin.length !== 4 || !!error || isLoading}
-            buttonStyles={{ marginTop: "50px" }}
+            buttonStyles={{ marginTop: '50px' }}
             clicked={handleProceed}
           >
             Proceed

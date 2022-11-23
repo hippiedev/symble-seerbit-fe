@@ -575,11 +575,11 @@ function Search() {
   return (
     <div>
       <div className={styles.ComingSoon}>
-          <ComingSoon id={styles.icon} />
-          <h5>Coming Soon...</h5>
-        </div>
+        <ComingSoon id={styles.icon} />
+        <h5>Coming Soon...</h5>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Search
+export default Search;

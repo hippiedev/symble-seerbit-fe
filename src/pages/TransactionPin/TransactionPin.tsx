@@ -1,21 +1,18 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "./TransactionPin.module.scss";
-import AuthScreen from "../../components/template/AuthScreen/AuthScreen";
-import { SeperatedInputs } from "../../components/UI/atoms/Input/Input";
-import Button from "../../components/UI/atoms/Button/Button";
-import ModalPrompt from "../../components/UI/molecules/ModalPrompt/ModalPrompt";
-import {
-  useSetPinMutation,
-  useUpdateUserMutation,
-} from "../../redux/feature/user/userApiSlice";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { RootState } from "../../redux/store";
-import { onSetPin } from "../../redux/feature/user/userSlice";
-import Popup from "../../components/UI/molecules/Popup/Popup";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './TransactionPin.module.scss';
+import AuthScreen from '../../components/template/AuthScreen/AuthScreen';
+import { SeperatedInputs } from '../../components/UI/atoms/Input/Input';
+import Button from '../../components/UI/atoms/Button/Button';
+import ModalPrompt from '../../components/UI/molecules/ModalPrompt/ModalPrompt';
+import { useSetPinMutation } from '../../redux/feature/user/userApiSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { RootState } from '../../redux/store';
+import { onSetPin } from '../../redux/feature/user/userSlice';
+import Popup from '../../components/UI/molecules/Popup/Popup';
 
 type Props = {
-  screenStyles?: import("react").CSSProperties;
+  screenStyles?: import('react').CSSProperties;
   handleScreen: (nextScreen: string) => void;
   handleConfirmPin?: () => void;
   handleChange?: (value: string) => void;
@@ -38,11 +35,16 @@ function SetTransactionPin({
         This pin will be required for all transactions
       </p>
       <div className={styles.InputWrap}>
-        <SeperatedInputs autoFocus={isActiveScreen} value={value} onChange={handleChange} length={4} />
+        <SeperatedInputs
+          autoFocus={isActiveScreen}
+          value={value}
+          onChange={handleChange}
+          length={4}
+        />
       </div>
       <Button
-        clicked={() => handleScreen("second-screen")}
-        buttonStyles={{ marginTop: "64px" }}
+        clicked={() => handleScreen('second-screen')}
+        buttonStyles={{ marginTop: '64px' }}
       >
         Next
       </Button>
@@ -61,11 +63,16 @@ function ConfirmPin({
     <div style={screenStyles} className={styles.TransactionPin}>
       <p className={styles.Text}>Retype the PIN you set</p>
       <div className={styles.InputWrap}>
-        <SeperatedInputs autoFocus={isActiveScreen} value={value} onChange={handleChange} length={4} />
+        <SeperatedInputs
+          autoFocus={isActiveScreen}
+          value={value}
+          onChange={handleChange}
+          length={4}
+        />
       </div>
       <Button
         disabled={isLoading}
-        buttonStyles={{ marginTop: "64px" }}
+        buttonStyles={{ marginTop: '64px' }}
         clicked={handleSubmit}
       >
         Set PIN
@@ -75,8 +82,8 @@ function ConfirmPin({
 }
 
 function TransactionPin() {
-  const [transactionPin, setTransactionPin] = useState("");
-  const [confirmPin, setConfirmPin] = useState("");
+  const [transactionPin, setTransactionPin] = useState('');
+  const [confirmPin, setConfirmPin] = useState('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const { user } = useAppSelector((state: RootState) => state.auth);
   const [setPin, { isLoading, error, isError }] = useSetPinMutation();
@@ -89,12 +96,12 @@ function TransactionPin() {
     setConfirmPin(value);
   };
 
-  const [currentScreen, setCurrentScreen] = useState("first-screen");
+  const [currentScreen, setCurrentScreen] = useState('first-screen');
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const onSubmit = async () => {
     const submitValue = {
-      username: user ? user.username : "",
+      username: user ? user.username : '',
       pin: parseInt(confirmPin, 10),
     };
     console.log(submitValue);
@@ -104,14 +111,14 @@ function TransactionPin() {
         dispatch(onSetPin(response));
         setShowModal(true);
         setTimeout(() => {
-          navigate("/");
+          navigate('/');
         }, 1000);
         console.log(response);
       } catch (e) {
         console.log(e);
       }
     } else {
-      setErrorMsg("PIN does not match");
+      setErrorMsg('PIN does not match');
       console.log(errorMsg);
     }
   };
@@ -130,7 +137,7 @@ function TransactionPin() {
     <>
       <Popup
         show={isError}
-        variant={isError ? "error" : undefined}
+        variant={isError ? 'error' : undefined}
         message={
           isError
             ? (
@@ -144,15 +151,15 @@ function TransactionPin() {
       />
       <AuthScreen
         title={
-          currentScreen === "first-screen"
-            ? "One more thing..."
-            : "Almost done..."
+          currentScreen === 'first-screen'
+            ? 'One more thing...'
+            : 'Almost done...'
         }
         description={
-          <p style={{ color: "#6B9AC4" }}>
-            {currentScreen === "first-screen"
-              ? "Set transaction PIN"
-              : "Confirm PIN"}
+          <p style={{ color: '#6B9AC4' }}>
+            {currentScreen === 'first-screen'
+              ? 'Set transaction PIN'
+              : 'Confirm PIN'}
           </p>
         }
       >
@@ -160,12 +167,12 @@ function TransactionPin() {
           handleScreen={(nextScreen) => handleScreenDisplay(nextScreen)}
           value={transactionPin}
           handleChange={handleTransactionPin}
-          isActiveScreen={currentScreen === "first-screen"}
+          isActiveScreen={currentScreen === 'first-screen'}
           screenStyles={{
             transform:
-              currentScreen === "first-screen"
-                ? "translateX(0)"
-                : "translateX(-200%)",
+              currentScreen === 'first-screen'
+                ? 'translateX(0)'
+                : 'translateX(-200%)',
           }}
         />
         <ConfirmPin
@@ -175,12 +182,12 @@ function TransactionPin() {
           handleChange={handleConfirmPin}
           handleSubmit={onSubmit}
           isLoading={isLoading}
-          isActiveScreen={currentScreen === "second-screen"}
+          isActiveScreen={currentScreen === 'second-screen'}
           screenStyles={{
             transform:
-              currentScreen === "second-screen"
-                ? "translateX(0)"
-                : "translateX(-200%)",
+              currentScreen === 'second-screen'
+                ? 'translateX(0)'
+                : 'translateX(-200%)',
           }}
         />
         {errorMsg ? <p className={styles.Error}>{errorMsg}</p> : null}

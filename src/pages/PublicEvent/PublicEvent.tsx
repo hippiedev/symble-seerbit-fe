@@ -326,7 +326,7 @@ function PublicEvent() {
                   {event?.class?.toLowerCase() === 'free' ? (
                     <span> Free</span>
                   ) : (
-                    <span>{event?.access_fee}</span>
+                    <span>&#8358;{event?.access_fee.toLocaleString()}</span>
                   )}
                 </div>
               </div>
