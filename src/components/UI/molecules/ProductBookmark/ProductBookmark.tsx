@@ -14,7 +14,7 @@ function ProductBookmark({ product }: { product: Product }) {
         </span>
       </div>
       <p className={styles.ProductName}>{product?.name}</p>
-      <a href={product.url} target="__blank">
+      <a href={product.paymentLinkUrl} target="__blank">
         <Button buttonStyles={{ padding: '8px 22px', fontSize: '12px' }}>
           Buy now
         </Button>
